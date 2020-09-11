@@ -9,6 +9,7 @@
     <input type="text" id="txt2" v-model.lazy="txt2" />
     <button v-on:click="age++" >Btn1</button>
     <button v-on:click="addA()" >Btn2</button>
+    <button v-on:click="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
 
     <div>
       Text = {{ input_txt1 }} <br/>
@@ -16,6 +17,7 @@
       Text3 = {{ msg }} <br/>
       Text3 = {{ age }} <br/>
       2waybind = {{ txt2 }} <br/>
+      computed = {{ addA() }} <br/>
     </div>
     <div id="canvas" style="height:200px; width:200px; border: 1px solid red;" v-on:mousemove="updateXY">{{ x }}, {{ y }}</div>
   </div>
@@ -36,13 +38,15 @@ export default {
       txt2: 'Welcome2',
       age: 4,
       x: 99,
-      y: 99
+      y: 99,
+      isValid: false
     }
   },
 
   methods: {
     addA: function(){
       console.log("addA");
+      return this.x + this.y;
     },
     updateXY(event){ //Function to update the X and Y cordinated of the mouse position
       this.x = event.offsetX;
@@ -50,6 +54,12 @@ export default {
     },
   },
 
+  computed: {
+    addAs: function(){
+      console.log("addA");
+      return this.x + this.y;
+    },
+  }
 }
 </script>
 
@@ -68,5 +78,11 @@ li {
 }
 a {
   color: #42b983;
+}
+.cssAvailable{
+  background-color: green;
+}
+.cssNotAvailable{
+  background-color: red;
 }
 </style>
