@@ -5,10 +5,11 @@
 
     <h2>Ecosystem</h2>
 
-    <input type="text" id="txt1" v-model.lazy="txt2" />
-    <input type="text" id="txt2" v-model.lazy="txt2" />
-    <button v-on:click="age++" >Btn1</button>
-    <button v-on:click="addA()" >Btn2</button>
+    <input type="text" id="txt1" v-model="txt2" /><br/> <!-- realtime update -->
+    <input type="text" id="txt2" v-model.lazy="txt2" /><br/> <!-- change on enter/click outside-->
+
+    <button v-on:click="age++">Btn1</button>
+    <button v-on:click="addA()">Btn2</button>
     <button v-on:click="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
 
     <div>
@@ -33,8 +34,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js Appx',
-      name: "kk",
-      input_txt1: "",
+      name: 'kk',
+      input_txt1: '',
       txt2: 'Welcome2',
       age: 4,
       x: 99,
@@ -42,23 +43,33 @@ export default {
       isValid: false
     }
   },
+  // data:{
+  //   msg: 'Welcome to Your Vue.js Appx',
+  //     name: "kk",
+  //     input_txt1: "",
+  //     txt2: 'Welcome2',
+  //     age: 4,
+  //     x: 99,
+  //     y: 99,
+  //     isValid: false
+  // },
 
   methods: {
-    addA: function(){
-      console.log("addA");
-      return this.x + this.y;
+    addA: function () {
+      console.log('addA')
+      return this.x + this.y
     },
-    updateXY(event){ //Function to update the X and Y cordinated of the mouse position
-      this.x = event.offsetX;
-      this.y = event.offsetY;
-    },
+    updateXY (event) { // Function to update the X and Y cordinated of the mouse position
+      this.x = event.offsetX
+      this.y = event.offsetY
+    }
   },
 
   computed: {
-    addAs: function(){
-      console.log("addA");
-      return this.x + this.y;
-    },
+    addAs: function () {
+      console.log('addA')
+      return this.x + this.y
+    }
   }
 }
 </script>
