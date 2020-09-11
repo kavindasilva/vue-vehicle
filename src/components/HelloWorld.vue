@@ -8,6 +8,7 @@
     <input type="text" id="txt1" v-model.lazy="txt2" />
     <input type="text" id="txt2" v-model.lazy="txt2" />
     <button v-on:click="age++" >Btn1</button>
+    <button v-on:click="addA()" >Btn2</button>
 
     <div>
       Text = {{ input_txt1 }} <br/>
@@ -16,7 +17,7 @@
       Text3 = {{ age }} <br/>
       2waybind = {{ txt2 }} <br/>
     </div>
-    <!-- <div id="canvas" style="height:200px; width:200px; border: 1px solid red;" v-on:mousemove="updateXY">{{ x }}, {{ y }}</div> -->
+    <div id="canvas" style="height:200px; width:200px; border: 1px solid red;" v-on:mousemove="updateXY">{{ x }}, {{ y }}</div>
   </div>
 </template>
 
@@ -37,7 +38,17 @@ export default {
       x: 99,
       y: 99
     }
-  }
+  },
+
+  methods: {
+    addA: function(){
+      console.log("addA");
+    },
+    updateXY(event){ //Function to update the X and Y cordinated of the mouse position
+      this.x = event.offsetX;
+      this.y = event.offsetY;
+    },
+  },
 
 }
 </script>
