@@ -11,14 +11,18 @@
     <button v-on:click="age++">Btn1</button>
     <button v-on:click="addA()">Btn2</button>
     <button v-on:click="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
+    <button @dblclick="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
 
     <div>
-      Text = {{ input_txt1 }} <br/>
-      Text2 = {{ name }} <br/>
-      Text3 = {{ msg }} <br/>
-      Text3 = {{ age }} <br/>
-      2waybind = {{ txt2 }} <br/>
-      computed = {{ addA() }} <br/>
+      <table style="margin: 0 auto; align: center">
+        <tr><td>Text </td><td> {{ input_txt1 }} </td></tr>
+        <tr><td>Text2 </td><td> {{ name }} </td></tr>
+        <tr><td>Text3 </td><td> {{ msg }} </td></tr>
+        <tr><td>Text3 </td><td> {{ age }} </td></tr>
+        <tr><td>2waybind </td><td> {{ txt2 }} </td></tr>
+        <tr><td>computed </td><td> {{ addAs }} </td></tr>
+        <tr><td>isValid </td><td> {{ isValid }} </td></tr>
+      </table>
     </div>
     <div id="canvas" style="height:200px; width:200px; border: 1px solid red;" v-on:mousemove="updateXY">{{ x }}, {{ y }}</div>
   </div>
@@ -27,10 +31,6 @@
 <script>
 export default {
   name: 'HelloWorld-ww',
-  // updateXY(event){ //Function to update the X and Y cordinated of the mouse position
-  //     x = event.offsetX;
-  //     y = event.offsetY;
-  // },
   data () {
     return {
       msg: 'Welcome to Your Vue.js Appx',
@@ -43,16 +43,6 @@ export default {
       isValid: false
     }
   },
-  // data:{
-  //   msg: 'Welcome to Your Vue.js Appx',
-  //     name: "kk",
-  //     input_txt1: "",
-  //     txt2: 'Welcome2',
-  //     age: 4,
-  //     x: 99,
-  //     y: 99,
-  //     isValid: false
-  // },
 
   methods: {
     addA: function () {
@@ -67,7 +57,7 @@ export default {
 
   computed: {
     addAs: function () {
-      console.log('addA')
+      console.log('addAs-computed')
       return this.x + this.y
     }
   }
