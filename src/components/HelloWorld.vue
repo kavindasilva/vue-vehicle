@@ -22,6 +22,9 @@
         <tr><td>2waybind </td><td> {{ txt2 }} </td></tr>
         <tr><td>computed </td><td> {{ addAs }} </td></tr>
         <tr><td>isValid </td><td> {{ isValid }} </td></tr>
+        <tr v-if="isValid" style="background-color: yellow"><td>SHOW-isValid </td><td> {{ isValid }} </td></tr>
+        <tr v-else style="background-color: purple"><td>!SHOW-isValid </td><td> {{ isValid }} </td></tr>
+        <tr v-show="isValid" style="background-color: yellow"><td>SHOW-isValid </td><td> {{ isValid }} </td></tr>
       </table>
     </div>
     <div id="canvas" style="height:200px; width:200px; border: 1px solid red;" v-on:mousemove="updateXY">{{ x }}, {{ y }}</div>
