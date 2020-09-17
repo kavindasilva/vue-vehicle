@@ -5,12 +5,13 @@
 
     <h2>Ecosystem</h2>
 
-    <input type="text" id="txt1" v-model="txt2" /><br/> <!-- realtime update -->
+    <input type="text" id="txt1" v-model="txt2" ref="inputRef"/><br/> <!-- realtime update -->
     <input type="text" id="txt2" v-model.lazy="txt2" /><br/> <!-- change on enter/click outside-->
 
     <button v-on:click="age++">Btn1</button>
     <button v-on:click="addA()">Btn2</button>
     <button v-on:click="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
+    <button v-on:click="readRef">Btn4</button>
     <button @dblclick="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
 
     <div>
@@ -54,6 +55,9 @@ export default {
     updateXY (event) { // Function to update the X and Y cordinated of the mouse position
       this.x = event.offsetX
       this.y = event.offsetY
+    },
+    readRef: function(){
+      console.log(this.$refs.inputRef.value);
     }
   },
   computed: {
