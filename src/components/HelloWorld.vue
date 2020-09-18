@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <counter></counter>
     <h2>Essential Links</h2>
 
     <h2>Ecosystem</h2>
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import Counter from "../components/Counter";
 export default {
   name: 'HelloWorld-ww',
   data () {
@@ -65,7 +67,10 @@ export default {
       console.log('addAs-computed')
       return this.x + this.y
     }
-  }
+  },
+  components: {
+       'counter': Counter
+   }
 }
 </script>
 
