@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+
     <counter></counter>
+    <cheat-sheet-1></cheat-sheet-1>
+
     <h2>Essential Links</h2>
 
     <h2>Ecosystem</h2>
@@ -24,8 +27,8 @@
         <tr><td>2waybind </td><td> {{ txt2 }} </td></tr>
         <tr><td>computed </td><td> {{ addAs }} </td></tr>
         <tr><td>isValid </td><td> {{ isValid }} </td></tr>
-        <tr v-if="isValid" style="background-color: yellow"><td>SHOW-isValid </td><td> {{ isValid }} </td></tr>
-        <tr v-else style="background-color: purple"><td>!SHOW-isValid </td><td> {{ isValid }} </td></tr>
+        <tr v-if="isValid" style="background-color: yellow"><td>SHOW-isValid </td><td> {{ isValid }} </td></tr> <!--if else-->
+        <tr v-else style="background-color: purple"><td>!SHOW-isValid </td><td> {{ isValid }} </td></tr> <!--if else-->
         <tr v-show="isValid" style="background-color: yellow"><td>SHOW-isValid </td><td> {{ isValid }} </td></tr>
       </table>
     </div>
@@ -35,6 +38,8 @@
 
 <script>
 import Counter from "../components/Counter";
+import CheatS1 from "../components/CheatSheet1";
+
 export default {
   name: 'HelloWorld-ww',
   data () {
@@ -69,7 +74,8 @@ export default {
     }
   },
   components: {
-       'counter': Counter
+       'counter': Counter,
+       'cheat-sheet-1': CheatS1
    }
 }
 </script>
