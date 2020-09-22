@@ -4,6 +4,7 @@
     <h4 id="count_head">Counter now: {{ count }}</h4>
 
     <button id="inc_count" v-on:click="count++">Increase</button>
+    <button id="reset_count" v-on:click="count=0">0</button>
     <button id="dec_count" v-on:click="count--">Decrease</button>
   </div>
 </template>
