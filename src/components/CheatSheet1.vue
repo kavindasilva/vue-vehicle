@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2>Cheat Sheet 1</h2>
-    <h4 id="count_head">Counter now: {{ count }}</h4>
+    <h4 id="count_head" v-bind:class="decideCounterClass">Counter now: {{ count }}</h4>
     <h6 id="count_head">Counter sqr: {{ comCountSquare }}</h6>
     <span>Count threshold: <input type="number" v-model.number="countThreshold" v-bind:style="decideThresholdBgColor" /></span> <br/>
 
@@ -41,8 +41,15 @@ export default {
     comCountSquare () {
       return this.count * this.count
     },
+    decideCounterClass () {
+      return {
+        'cls-3': this.count > 0,
+        'cls-5': this.count > 3,
+        'cls-8': this.count > 5
+      }
+    },
     decideThresholdBgColor () {
-      switch ( Math.abs(this.countThreshold) % 4) {
+      switch (Math.abs(this.countThreshold) % 4) {
         case 0:
           return 'background-color: pink'
         case 1:
@@ -51,6 +58,8 @@ export default {
           return 'background-color: yellow'
         case 3:
           return 'background-color: lime'
+        default:
+          return 'background-color: grey'
       }
     }
   }
@@ -72,6 +81,18 @@ li {
 }
 a {
   color: #42b983;
+}
+.cls-3 {
+  color: green;
+  font-weight: bold;
+}
+.cls-5 {
+  color: orange;
+  font-style: italic;
+}
+.cls-8 {
+  color: blue;
+  font-size: 1.8em;
 }
 
 </style>
