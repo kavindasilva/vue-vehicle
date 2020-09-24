@@ -3,7 +3,7 @@
     <h2>Cheat Sheet 1</h2>
     <h4 id="count_head">Counter now: {{ count }}</h4>
     <h6 id="count_head">Counter sqr: {{ comCountSquare }}</h6>
-    <span>Count threshold: <input type="text" v-model.number="countThreshold"/></span> <br/>
+    <span>Count threshold: <input type="number" v-model.number="countThreshold" v-bind:style="decideThresholdBgColor" /></span> <br/>
 
     <button id="inc_count" v-on:click="count++">Increase</button>
     <button id="reset_count" v-on:click="count=0">0</button>
@@ -29,17 +29,29 @@ export default {
       count: 0,
       inputText1: 'x',
       countThreshold: 0,
-      webTag: '<a href="http://www.google.com/">Web tag text</a>',
+      webTag: '<a href="http://www.google.com/">Web tag text</a>'
     }
   },
   methods: {
     logClick: function (e) {
-      console.log("logClick", e)
+      console.log('logClick', e)
     }
   },
   computed: {
-    comCountSquare(){
+    comCountSquare () {
       return this.count * this.count
+    },
+    decideThresholdBgColor () {
+      switch ( Math.abs(this.countThreshold) % 4) {
+        case 0:
+          return 'background-color: pink'
+        case 1:
+          return 'background-color: orange'
+        case 2:
+          return 'background-color: yellow'
+        case 3:
+          return 'background-color: lime'
+      }
     }
   }
 }
