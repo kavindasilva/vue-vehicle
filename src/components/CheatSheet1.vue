@@ -18,6 +18,17 @@
     Update lazy - -: <input type="text" v-model.lazy="inputText1"/>
     Update realtime: <input type="text" v-model="inputText1"/> <br/>
     One way bind: <input type="text" v-bind:value="inputText1"/>
+    <hr/>
+
+    <h2>Normal for loop</h2>
+    <ul>
+      <li v-for="fr in fruits" v-bind:key="fr.id">{{fr.label}}</li> <!--with key-->
+    </ul>
+    <br/>
+
+    <ol>
+      <li v-for="(fr, i) in fruits" v-bind:key="i">{{fr.label}}</li> <!--with index-->
+    </ol>
 
   </div>
 </template>
@@ -29,7 +40,15 @@ export default {
       count: 0,
       inputText1: 'x',
       countThreshold: 0,
-      webTag: '<a href="http://www.google.com/">Web tag text</a>'
+      webTag: '<a href="http://www.google.com/">Web tag text</a>',
+      fruits: [
+        { id: 1, name: 'apple', label: 'Apple' },
+        { id: 2, name: 'banana', label: 'Banana' },
+        { id: 3, name: 'b-grape', label: 'Black grapes' },
+        { id: 4, name: 'g-grape', label: 'Green grapes' },
+        { id: 5, name: 'orange', label: 'Orange' },
+        { id: 6, name: 'mango', label: 'Mango' }
+      ]
     }
   },
   methods: {
