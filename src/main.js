@@ -13,7 +13,7 @@ Vue.directive('color', {
     el.style.color = '#'+ Math.random().toString(16).slice(2,8);
   }
 });
-Vue.directive('theme', {
+Vue.directive('theme', { // try this: https://stackoverflow.com/questions/32154967/custom-directive-and-directive-parameters
   bind(el, binding, vnode){
     if(binding.value == 'wide'){
       el.style.maxWidth = "1260px";
