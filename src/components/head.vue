@@ -20,6 +20,27 @@ export default {
             let randd = Math.random()
             this.$emit('changeTitled', randd.toString())
         }
+    },
+    beforeCreate(){
+        alert('beforeCreate')
+    },
+    created(){
+        alert('created')
+    },
+    beforeMount(){
+        alert('beforeMount');
+    },
+    mounted(){
+        alert('mounted');
+    },
+    beforeUpdate(){
+        alert('beforeUpdate');
+    },
+    updated(){
+        alert('updated');
+    },
+    beforeDestroy(){
+        alert('beforeDestroy')
     }
 }
 </script>
