@@ -2,7 +2,7 @@
     <div>
         <h1>Posts</h1>
         <div v-for="(post, i) in posts" v-bind:key="i">
-            <h2>{{ post.title }}</h2>
+            <h2 v-color>{{ post.title }}</h2>
             <article>{{ post.body }}</article>
         </div>
     </div>
