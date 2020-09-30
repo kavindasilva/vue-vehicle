@@ -8,6 +8,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 Vue.config.productionTip = false
 
+//Custom Directives
 Vue.directive('color', {
   bind(el, binding, vnode){
     el.style.color = '#'+ Math.random().toString(16).slice(2,8);
@@ -25,6 +26,14 @@ Vue.directive('theme', { // try this: https://stackoverflow.com/questions/321549
       el.style.padding = '20px'
     }
   }
+})
+
+//Custom Filters / pipes
+Vue.filter('to-uppercase', function(value){
+  return value.toUpperCase();
+})
+Vue.filter('snippet', function(value){
+  return value.slice(0,100);
 })
 
 /* eslint-disable no-new */

@@ -3,7 +3,8 @@
         <button @click="isWide = !isWide">Wide/Narrow</button>
         <h1>Posts</h1>
         <div v-for="(post, i) in posts" v-bind:key="i">
-            <h2 v-color>{{ post.title | to-uppercase }}</h2>
+            <!-- <h2 v-color>{{ post.title | to-uppercase }}</h2> --> <!--before vue 3.0-->
+            <h2 v-color>{{ toUpperCaseC(post.title) }}</h2> <!--after vue 3.0-->
             <article>{{ post.body }}</article>
         </div>
     </div>
@@ -22,6 +23,11 @@ export default {
         this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
             this.posts = data.body.slice(0,5);
         })
+    },
+    methods: {
+        toUpperCaseC (param) {
+            return param.toUpperCase();
+        }
     },
     computed: {
         getWdieNarrow () {
