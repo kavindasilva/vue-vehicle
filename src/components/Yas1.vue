@@ -1,6 +1,6 @@
 <template>
     <div v-theme:column="getWideOrNarrow">
-        <com-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></com-header>
+        <com-header v-bind:title="title" v-on:changeTitled="updateTitle($event)"></com-header>
         <button @click="isWide = !isWide">Wide/Narrow</button>
         <h1>Posts</h1>
         <div v-for="(post, i) in posts" v-bind:key="i">
@@ -33,6 +33,7 @@ export default {
             return param.toUpperCase();
         },
         updateTitle: function(updateTitle){
+            console.log("updateTitle", updateTitle);
             this.title = updateTitle;
         }
     },

@@ -18,7 +18,7 @@ export default {
     methods: {
         changeTitle: function(){
             let randd = Math.random()
-            this.$emit('changeTitle', randd.toString());
+            this.$emit('changeTitled', randd.toString())
         }
     }
 }
