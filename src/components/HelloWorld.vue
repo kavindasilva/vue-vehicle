@@ -19,6 +19,7 @@
     <button @dblclick="isValid = !isValid" v-bind:class="{cssAvailable: isValid, cssNotAvailable: !isValid}" >Btn3</button>
 
     <div>
+      <y-1></y-1>
       <table style="margin: 0 auto; align: center">
         <tr><td>Text </td><td> {{ input_txt1 }} </td></tr>
         <tr><td>Text2 </td><td> {{ name }} </td></tr>
@@ -39,6 +40,7 @@
 <script>
 import Counter from "../components/Counter";
 import CheatS1 from "../components/CheatSheet1";
+import Y1 from "../components/Yas1";
 
 export default {
   name: 'HelloWorld-ww',
@@ -75,6 +77,7 @@ export default {
   },
   components: {
        'counter': Counter,
+       'y-1': Y1,
        'cheat-sheet-1': CheatS1
    }
 }
