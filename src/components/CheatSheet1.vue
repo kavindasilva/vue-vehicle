@@ -12,6 +12,9 @@
     <a v-on:click.prevent="logClick" href="http://www.google.lk">Google - prevent click event</a> <br/>
     <a v-on:click="logClick" href="http://www.google.com">Google - allow click event</a> <hr/>
 
+    <button v-on:click="callPromise(1)" >Promise Resolve</button> <br/>
+    <button v-on:click="callPromise(0)" >Promise Reject</button> <hr/>
+
     <p v-html="webTag"></p>
     <span v-html="webTag"></span> <hr/>
 
@@ -27,7 +30,7 @@
     <br/>
 
     <ol>
-      <li v-for="(fr, i) in fruits" v-bind:key="i">{{fr.label}}</li> <!--with index-->
+      <li v-for="(fr, i) in fruits" v-bind:key="i">{{i+1}}.{{fr.label}}</li> <!--with index-->
     </ol>
 
   </div>
@@ -38,6 +41,8 @@ export default {
   data () {
     return {
       count: 0,
+      promiseTimeout: 5000,
+      promiseFlag: true,
       inputText1: 'x',
       countThreshold: 0,
       webTag: '<a href="http://www.google.com/">Web tag text</a>',
@@ -54,6 +59,36 @@ export default {
   methods: {
     logClick: function (e) {
       console.log('logClick', e)
+    },
+    callPromise(flag){
+      console.log('callPromise', Boolean(flag))
+      this.promiseFlag = Boolean(flag)
+      this.anotherFunction().then(
+        res => { console.log("Promise success", res); }
+      ).catch(
+        res => { console.log("Promise failed", res); }
+      )
+    },
+    anotherFunction(){
+      return new Promise( (resolve, reject) => {
+        // let x = 1;
+        if( this.promiseFlag ){
+          setTimeout( () => resolve(
+            {
+              status: 'Promise Sucess',
+              code: 1
+            }
+          ), this.promiseTimeout);
+        }
+        else{
+          setTimeout( () => reject(
+            {
+              status: 'Promise failed',
+              code: 2
+            }
+          ), this.promiseTimeout);
+        }
+      })
     }
   },
   computed: {
