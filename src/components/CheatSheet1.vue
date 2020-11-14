@@ -12,7 +12,8 @@
     <a v-on:click.prevent="logClick" href="http://www.google.lk">Google - prevent click event</a> <br/>
     <a v-on:click="logClick" href="http://www.google.com">Google - allow click event</a> <hr/>
 
-    <button v-on:click="callPromise(1)" >Promise Resolve</button> <br/>
+    <button v-on:click="callPromise(1)" >Promise Resolve</button>
+    <input type="number" placeholder="promise secs (5)" v-on:change="updatePromiseTimeout" /> secs
     <button v-on:click="callPromise(0)" >Promise Reject</button> <hr/>
 
     <p v-html="webTag"></p>
@@ -59,6 +60,10 @@ export default {
   methods: {
     logClick: function (e) {
       console.log('logClick', e)
+    },
+    updatePromiseTimeout(e){
+      this.promiseTimeout = e.target.value * 1000;
+      console.log('updatePromiseTimeout(ms)',this.promiseTimeout)
     },
     callPromise(flag){
       console.log('callPromise', Boolean(flag))
